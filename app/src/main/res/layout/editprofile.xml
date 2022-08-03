@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="330dp"
+    android:layout_height="500dp"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="@drawable/profilepic">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintVertical_bias="0.0"
+    android:orientation="vertical">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/picu"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="10dp"
+        android:padding="2.6dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/pic"
+        android:layout_gravity="center"
+        android:src="@drawable/pp"
+        tools:ignore="MissingConstraints" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Update Profile"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="23dp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints" />
+<com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    app:boxCornerRadiusBottomEnd="20dp"
+    app:boxCornerRadiusTopStart="20dp"
+    app:boxCornerRadiusBottomStart="20dp"
+    app:boxCornerRadiusTopEnd="20dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+    android:hint="Name"
+    android:layout_gravity="center_horizontal"
+    app:hintTextColor="#0EA504"
+    app:boxStrokeColor="#018CCC"
+    app:boxStrokeWidth="2dp"
+    app:startIconDrawable="@drawable/ic_baseline_person_24"
+
+    >
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/fullnameup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="name"
+        android:inputType="text"
+        />
+</com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:hint="Phone Number"
+        app:hintTextColor="#0EA504"
+        app:boxStrokeColor="#018CCC"
+        app:boxStrokeWidth="2dp"
+        app:startIconDrawable="@drawable/ic_baseline_phone_24"
+        app:prefixText="+91"
+        app:prefixTextColor="#F44336"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phoneup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0000000000"
+            android:maxLength="10"
+            android:inputType="number"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:hint="Date Of Birth"
+        app:hintTextColor="#0EA504"
+        app:boxStrokeColor="#018CCC"
+        app:boxStrokeWidth="2dp"
+        app:startIconDrawable="@drawable/ic_baseline_date_range_24"
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/dobup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:boxCornerRadiusBottomEnd="20dp"
+        app:boxCornerRadiusTopStart="20dp"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:hint="Bio"
+        app:hintTextColor="#0EA504"
+        app:boxStrokeColor="#018CCC"
+        app:boxStrokeWidth="2dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="110"
+        app:errorEnabled="true"
+        app:boxStrokeErrorColor="#ED0303"
+
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/bio"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:maxLength="110"
+
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#03136C"
+        android:text="save"
+        android:textSize="20dp"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</LinearLayout>
+
+    <ImageView
+        android:id="@+id/closepopup"
+        android:layout_width="32dp"
+        android:layout_height="33dp"
+        android:background="@drawable/ic_baseline_cancel_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.037" />
+</androidx.constraintlayout.widget.ConstraintLayout>

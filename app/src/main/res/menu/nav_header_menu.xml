@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="ExtraText">
+    <item
+        android:id="@+id/myItem1"
+        android:icon="@drawable/user"
+        android:title="Profile"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/myItem2"
+        android:title="Books"
+        android:icon="@drawable/book1"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/myItem3"
+        android:title="Blogs"
+        android:icon="@drawable/blogging"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/myItem4"
+        android:icon="@drawable/writing"
+        android:title="Post story"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/bookmarked"
+        android:icon="@drawable/ic_baseline_bookmark_added_24"
+        android:title="Bookmarked"
+        />
+    <item
+        android:id="@+id/myItem5"
+        android:icon="@drawable/notification"
+        android:title="Notification"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/logout"
+        android:icon="@drawable/logout"
+        android:title="Logout"
+        tools:ignore="HardcodedText" />
+    <item android:title="others"
+        tools:ignore="HardcodedText">
+        <menu>
+            <item
+                android:id="@+id/stting"
+                android:icon="@drawable/settings"
+                android:title="Setting"
+                tools:ignore="HardcodedText" />
+            <item
+                android:id="@+id/support"
+                android:icon="@drawable/customerservice"
+                android:title="Support"
+                tools:ignore="HardcodedText" />
+            <item
+                android:id="@+id/about"
+                android:icon="@drawable/info"
+                android:title="About"
+                tools:ignore="HardcodedText" />
+        </menu>
+    </item>
+
+</menu>
