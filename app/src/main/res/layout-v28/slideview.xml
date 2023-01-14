@@ -51,18 +51,23 @@
                 android:layout_marginTop="18dp">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/bookL"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#65E7F8"
-                    app:cardElevation="10dp"
-                    app:cardCornerRadius="20dp">
+                    android:outlineSpotShadowColor="@color/dark_grey"
+                    app:cardCornerRadius="20dp"
+                    android:focusable="true">
 
                     <ImageView
                         android:id="@+id/bookimg"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="9dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="5dp"
                         android:src="@drawable/book1" />
@@ -79,21 +84,25 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/story"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#FBBC60"
-                    app:cardElevation="8dp"
-                    app:cardCornerRadius="20dp">
+                    android:backgroundTint="#7385E8"
+                    app:cardCornerRadius="20dp"
+                    android:focusable="true">
 
                     <ImageView
                         android:id="@+id/audioStory"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="9dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="5dp"
-                        android:src="@drawable/blogging" />
+                        android:src="@drawable/audiobook" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -102,22 +111,23 @@
                         android:text="Audio Story"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-
                         tools:ignore="RtlCompat" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    app:cardElevation="8dp"
                     android:backgroundTint="#6BFD71"
                     app:cardCornerRadius="20dp">
 
                     <ImageView
                         android:id="@+id/writestory"
-                        android:layout_width="60dp"
+                        android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="5dp"
@@ -141,17 +151,19 @@
                 android:layout_marginTop="20dp">
 
                 <androidx.cardview.widget.CardView
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#E785F8"
-                    app:cardElevation="8dp"
                     app:cardCornerRadius="20dp">
 
                     <ImageView
                         android:id="@+id/poem"
-                        android:layout_width="60dp"
+                        android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="5dp"
@@ -169,17 +181,20 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/exp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#8FA0FB"
-                    app:cardElevation="8dp"
+                    android:backgroundTint="#FBEA50"
                     app:cardCornerRadius="20dp">
 
                     <ImageView
                         android:id="@+id/experience"
-                        android:layout_width="66dp"
+                        android:layout_width="match_parent"
                         android:layout_height="66dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="5dp"
@@ -197,18 +212,20 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#F87E75"
-                    app:cardElevation="8dp"
                     app:cardCornerRadius="20dp">
 
                     <ImageView
                         android:id="@+id/others"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="5dp"
                         android:src="@drawable/writing" />

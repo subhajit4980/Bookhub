@@ -1,14 +1,10 @@
-package com.example.bookhub
+package com.example.bookhub.Authentication
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.Animation
-import android.view.animation.AnimationUtils.loadAnimation
-import android.widget.Button
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
-import com.google.firebase.auth.FirebaseAuth
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -16,14 +12,14 @@ import androidx.fragment.app.FragmentPagerAdapter
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import org.w3c.dom.Text
+import com.example.bookhub.R
 
 class Loginhome : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loginhome)
-        val topAnimation: Animation? = AnimationUtils.loadAnimation(this,R.anim.top_animation)
-        val bottomanim: Animation? = AnimationUtils.loadAnimation(this,R.anim.bottom_animation)
+        val topAnimation: Animation? = AnimationUtils.loadAnimation(this, R.anim.top_animation)
+        val bottomanim: Animation? = AnimationUtils.loadAnimation(this, R.anim.bottom_animation)
         val titletxt:TextView=findViewById(R.id.title_text)
         titletxt.animation=topAnimation
         val details:ConstraintLayout=findViewById(R.id.logindetails)

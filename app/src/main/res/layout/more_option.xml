@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/vie_bg">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose"
+        android:textAlignment="center"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+        <TextView
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:id="@+id/editPost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   Edit"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:drawableLeft="@drawable/ic_baseline_edit_24"/>
+        <TextView
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:id="@+id/deletePost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   Delete"
+            android:textSize="20sp"
+            android:padding="10dp"
+            android:drawableLeft="@drawable/ic_baseline_delete_24"/>
+    </LinearLayout>
+
+</LinearLayout>

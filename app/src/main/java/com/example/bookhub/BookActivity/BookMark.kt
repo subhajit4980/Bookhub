@@ -1,26 +1,21 @@
-package com.example.bookhub
+package com.example.bookhub.BookActivity
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.core.view.isEmpty
-import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bookhub.Adapter_files.Fav_Book
-import com.example.bookhub.Adapter_files.MyAdapter
-import com.example.bookhub.Adapter_files.books
+import com.example.bookhub.Adapter.MyAdapter
+import com.example.bookhub.R
+import com.example.bookhub.data.books
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.getValue
 import kotlinx.android.synthetic.main.bookmark.*
 import kotlinx.android.synthetic.main.bookmark.search
-import kotlinx.android.synthetic.main.bookmark.view.*
 
 class BookMark : AppCompatActivity(),MyAdapter.OnItemClickListner {
 //    private lateinit var favBooksArrayList: ArrayList<Fav_Book>
@@ -130,7 +125,7 @@ class BookMark : AppCompatActivity(),MyAdapter.OnItemClickListner {
     }
     override fun onItemClick(item: books, position: Int) {
         var Pdf_image:String=""
-        val intent= Intent(this,Pdfviewer::class.java)
+        val intent= Intent(this, Pdfviewer::class.java)
         intent.putExtra("title",item.title)
         intent.putExtra("image_url",Pdf_image)
         intent.putExtra("pdfname",item.pdfname)

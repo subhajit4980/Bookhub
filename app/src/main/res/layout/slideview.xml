@@ -51,17 +51,21 @@
                 android:layout_marginTop="18dp">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/c1"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#65E7F8"
                     android:outlineSpotShadowColor="@color/dark_grey"
-                    app:cardCornerRadius="20dp">
+                    app:cardCornerRadius="20dp"
+                    android:focusable="true">
 
                     <ImageView
                         android:id="@+id/bookimg"
-                        android:layout_width="60dp"
+                        android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="5dp"
@@ -79,16 +83,20 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/c2"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:backgroundTint="#FBBC60"
-                    app:cardCornerRadius="20dp">
+                    app:cardCornerRadius="20dp"
+                    android:focusable="true">
 
                     <ImageView
                         android:id="@+id/audioStory"
-                        android:layout_width="60dp"
+                        android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="5dp"
@@ -105,6 +113,9 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_margin="10dp"
@@ -114,7 +125,7 @@
 
                     <ImageView
                         android:id="@+id/writestory"
-                        android:layout_width="60dp"
+                        android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="5dp"
@@ -138,6 +149,9 @@
                 android:layout_marginTop="20dp">
 
                 <androidx.cardview.widget.CardView
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_margin="10dp"
@@ -147,7 +161,7 @@
 
                     <ImageView
                         android:id="@+id/poem"
-                        android:layout_width="60dp"
+                        android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="5dp"
@@ -165,6 +179,9 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_margin="10dp"
@@ -174,7 +191,7 @@
 
                     <ImageView
                         android:id="@+id/experience"
-                        android:layout_width="66dp"
+                        android:layout_width="match_parent"
                         android:layout_height="66dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="5dp"
@@ -192,6 +209,9 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:foreground="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
                     android:layout_margin="10dp"
@@ -201,8 +221,8 @@
 
                     <ImageView
                         android:id="@+id/others"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:layout_marginBottom="5dp"
                         android:src="@drawable/writing" />

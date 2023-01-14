@@ -2,9 +2,9 @@ package com.example.bookhub
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.ActionBar.LayoutParams
 import android.app.AlertDialog
 import android.app.Dialog
-import android.content.ContentResolver
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
@@ -17,8 +17,6 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.view.MotionEvent
-import android.view.ScaleGestureDetector
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -37,7 +35,11 @@ import com.bumptech.glide.Glide
 import com.denzcoskun.imageslider.ImageSlider
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
-import com.example.bookhub.Adapter_files.Adapter
+import com.example.bookhub.Adapter.Adapter
+import com.example.bookhub.Authentication.Loginhome
+//import com.example.bookhub.Book.Book
+import com.example.bookhub.BookActivity.Book
+import com.example.bookhub.BookActivity.BookMark
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
@@ -49,10 +51,9 @@ import com.squareup.picasso.Picasso
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.android.synthetic.main.slideview.*
 import java.io.ByteArrayOutputStream
 import java.io.IOException
-import kotlin.math.max
-import kotlin.math.min
 
 
 class Home : AppCompatActivity() {
@@ -115,18 +116,18 @@ class Home : AppCompatActivity() {
                     SHowpopup()
                 }
                 R.id.myItem2 -> {
-                    val intent=Intent(this,Book::class.java)
+                    val intent=Intent(this, Book::class.java)
                     startActivity(intent)
                     drawerLayout!!.closeDrawer(GravityCompat.START)
                 }
                 R.id.bookmarked->{
-                    val intent=Intent(this,BookMark::class.java)
+                    val intent=Intent(this, BookMark::class.java)
                     startActivity(intent)
                     drawerLayout!!.closeDrawer(GravityCompat.START)
                 }
                 R.id.logout -> {
                     FirebaseAuth.getInstance().signOut()
-                    startActivity(Intent(this,Loginhome::class.java))
+                    startActivity(Intent(this, Loginhome::class.java))
                     finish()
                 }
             }
@@ -151,14 +152,20 @@ class Home : AppCompatActivity() {
         Glide.with(this).load("https://subhajit4980.github.io/Bookhubpic.github.io/8.png").into(others)
         val book:ImageView=findViewById(R.id.bookimg)
         val audioStory:ImageView=findViewById(R.id.audioStory)
-        book.setOnClickListener{
-            val intent=Intent(this,Book::class.java)
+        bookL.setOnClickListener{
+            val intent=Intent(this, Book::class.java)
             startActivity(intent)
         }
-        audioStory.setOnClickListener{
-            val intent=Intent(this,Audio_story_activity::class.java)
+        story.setOnClickListener{
+            val intent=Intent(this, Audio_story_activity::class.java)
             startActivity(intent)
         }
+        val writeStory:ImageView=findViewById(R.id.writestory)
+        writeStory.setOnClickListener {
+            val intent=Intent(this, Write_story::class.java)
+            startActivity(intent)
+        }
+
         initimageBitmaps()
     }
     fun Headernav()
@@ -187,7 +194,8 @@ class Home : AppCompatActivity() {
                 profileDialog!!.dismiss()
             }
             profileDialog!!.show()
-            profileDialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            profileDialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.DKGRAY))
+            profileDialog!!.window!!.setLayout(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT)
         }
         var refuser:DatabaseReference=FirebaseDatabase.getInstance().getReference("bookhub/users").child(userId)
         refuser.get().addOnCompleteListener(this){
@@ -373,27 +381,27 @@ class Home : AppCompatActivity() {
     }
     @SuppressLint("NewApi")
     private fun launchGallery() {
-        val options = arrayOf("Camera", "Gallery")
-        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
-        builder.setTitle("Pick Image From")
-        builder.setItems(options, DialogInterface.OnClickListener { dialog, which ->
-            if (which == 0) {
-                if (!this.checkCameraPermission()!!) {
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        requestCameraPermission()
-//                    }
-                } else {
-                    pickFromGallery()
-                }
-            } else if (which == 1) {
+//        val options = arrayOf("Camera", "Gallery")
+//        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+//        builder.setTitle("Pick Image From")
+//        builder.setItems(options, DialogInterface.OnClickListener { dialog, which ->
+//            if (which == 0) {
+//                if (!this.checkCameraPermission()!!) {
+////                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                        requestCameraPermission()
+////                    }
+//                } else {
+//                    pickFromGallery()
+//                }
+//            } else if (which == 1) {
                 if (!checkStoragePermission()!!) {
                     requestStoragePermission()
                 } else {
                     pickFromGallery()
                 }
-            }
-        })
-        builder.create().show()
+//            }
+//        })
+//        builder.create().show()
     }
 
     // checking storage permissions
@@ -413,17 +421,17 @@ class Home : AppCompatActivity() {
     }
 
     // checking camera permissions
-    private fun checkCameraPermission(): Boolean? {
-        val result = ContextCompat.checkSelfPermission(
-            this,
-            Manifest.permission.CAMERA
-        ) == PackageManager.PERMISSION_GRANTED
-        val result1 = ContextCompat.checkSelfPermission(
-            this,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-        ) == PackageManager.PERMISSION_GRANTED
-        return result && result1
-    }
+//    private fun checkCameraPermission(): Boolean? {
+//        val result = ContextCompat.checkSelfPermission(
+//            this,
+//            Manifest.permission.CAMERA
+//        ) == PackageManager.PERMISSION_GRANTED
+//        val result1 = ContextCompat.checkSelfPermission(
+//            this,
+//            Manifest.permission.WRITE_EXTERNAL_STORAGE
+//        ) == PackageManager.PERMISSION_GRANTED
+//        return result && result1
+//    }
 
     // Requesting camera permission
     @RequiresApi(Build.VERSION_CODES.M)
@@ -442,21 +450,21 @@ class Home : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
-            CAMERA_REQUEST -> {
-                if (grantResults.size > 0) {
-                    val camera_accepted = grantResults[0] == PackageManager.PERMISSION_GRANTED
-                    val writeStorageaccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED
-                    if (camera_accepted && writeStorageaccepted) {
-                        pickFromGallery()
-                    } else {
-                        Toast.makeText(
-                            this,
-                            "Please Enable Camera and Storage Permissions",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
-                }
-            }
+//            CAMERA_REQUEST -> {
+//                if (grantResults.size > 0) {
+//                    val camera_accepted = grantResults[0] == PackageManager.PERMISSION_GRANTED
+//                    val writeStorageaccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED
+//                    if (camera_accepted && writeStorageaccepted) {
+//                        pickFromGallery()
+//                    } else {
+//                        Toast.makeText(
+//                            this,
+//                            "Please Enable Camera and Storage Permissions",
+//                            Toast.LENGTH_LONG
+//                        ).show()
+//                    }
+//                }
+//            }
             STORAGE_REQUEST -> {
                 if (grantResults.size > 0) {
                     val writeStorageaccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED

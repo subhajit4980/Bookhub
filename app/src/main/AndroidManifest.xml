@@ -1,45 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.bookhub" >
+    package="com.example.bookhub">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:name=".NetworkSecurity"
+        android:name=".Networking.NetworkSecurity"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BookHUB" >
+        android:theme="@style/Theme.BookHUB">
+        <activity
+            android:name=".Write_story"
+            android:exported="false" />
         <activity
             android:name=".story_audio"
             android:exported="false"
             android:label="@string/title_activity_story_audio"
-            android:theme="@style/Theme.BookHUB.NoActionBar" />
+            android:theme="@style/Theme.BookHUB.NoActionBar"
+            tools:ignore="MissingClass" />
         <activity
             android:name=".audio_story"
             android:exported="false"
             android:label="@string/title_activity_audio_story"
-            android:theme="@style/Theme.BookHUB" />
+            android:theme="@style/Theme.BookHUB"
+            tools:ignore="MissingClass" />
         <activity
             android:name=".Audio_story_activity"
             android:exported="false" />
         <activity
-            android:name=".BookMark"
+            android:name=".BookActivity.BookMark"
             android:exported="false" />
         <activity
-            android:name=".PdfReada"
-            android:parentActivityName=".Pdfviewer" />
+            android:name=".BookActivity.PdfReada"
+            android:parentActivityName=".BookActivity.Pdfviewer" />
         <activity
-            android:name=".Book"
+            android:name=".BookActivity.Book"
             android:exported="false" />
         <activity
-            android:name=".Pdfviewer"
+            android:name=".BookActivity.Pdfviewer"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
@@ -49,17 +56,17 @@
             android:theme="@style/Base.Theme.AppCompat"
             tools:ignore="LockedOrientationActivity" /> <!-- optional (needed if default theme has no action bar) -->
         <activity
-            android:name=".Login_fragment"
+            android:name=".Authentication.Login_fragment"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="Instantiatable,LockedOrientationActivity" />
         <activity
-            android:name=".Loginhome"
+            android:name=".Authentication.Loginhome"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".wellcomeuser"
+            android:name=".startup.wellcomeuser"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
@@ -85,7 +92,7 @@
             android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" >
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

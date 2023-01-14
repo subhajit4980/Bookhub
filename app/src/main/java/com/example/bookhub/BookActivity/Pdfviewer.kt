@@ -1,29 +1,22 @@
-package com.example.bookhub
+package com.example.bookhub.BookActivity
 
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
-import android.net.wifi.WifiConfiguration.AuthAlgorithm.strings
-import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.example.bookhub.R
 import com.github.barteksc.pdfviewer.PDFView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_pdfviewer.*
-import kotlinx.android.synthetic.main.data.*
 //import kotlinx.android.synthetic.main.activity_pdfviewer.*
-import java.io.BufferedInputStream
-import java.io.InputStream
-import java.net.HttpURLConnection
-import java.net.URL
 
 class Pdfviewer : AppCompatActivity() ,RatingBar.OnRatingBarChangeListener{
     var pdfDialog:Dialog?=null
@@ -55,7 +48,7 @@ class Pdfviewer : AppCompatActivity() ,RatingBar.OnRatingBarChangeListener{
                 setRating(title)
                 val view_pdf:Button=findViewById(R.id.view_pdf)
                 view_pdf.setOnClickListener{
-                    val intent=Intent(this,PdfReada::class.java)
+                    val intent=Intent(this, PdfReada::class.java)
                     intent.putExtra("pdfname",pdfurl.toString())
                     startActivity(intent)
 

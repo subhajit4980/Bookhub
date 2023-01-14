@@ -1,4 +1,4 @@
-package com.example.bookhub.Adapter_files
+package com.example.bookhub.Adapter
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
@@ -14,12 +14,13 @@ import android.content.Context
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.bookhub.data.books
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.data.view.*
 
 
-class MyAdapter(private  val booklist:ArrayList<books>,var listener: OnItemClickListner,private val context: Context):RecyclerView.Adapter<MyAdapter.MyVIewHolder> (){
+class MyAdapter(private  val booklist:ArrayList<books>, var listener: OnItemClickListner, private val context: Context):RecyclerView.Adapter<MyAdapter.MyVIewHolder> (){
 //    private val context: Context
 private var selectedItemPosition: Int = 0
     private  var fvrtChecker:Boolean =false
@@ -49,7 +50,6 @@ private var selectedItemPosition: Int = 0
 //            val emptyDataObserver= empty_data_observer(rc,itemView)
             itemView.setOnClickListener{action.onItemClick(item,adapterPosition)}
             //BOOKMARK PART Start
-            val currUser=FirebaseAuth.getInstance().currentUser!!.uid
             val fvrtref=FirebaseDatabase.getInstance().getReference("bookhub/users/${FirebaseAuth.getInstance().currentUser!!.uid}/bookmark/favourites")
             val fvrt_list=FirebaseDatabase.getInstance().getReference("bookhub/users/${FirebaseAuth.getInstance().currentUser!!.uid}/bookmark/favouritList")
             itemView.bookmark.setOnClickListener {
@@ -107,7 +107,7 @@ private var selectedItemPosition: Int = 0
 
 
     interface OnItemClickListner{
-        fun onItemClick(item : books,position: Int)
+        fun onItemClick(item : books, position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyVIewHolder {
@@ -118,15 +118,6 @@ private var selectedItemPosition: Int = 0
     @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: MyVIewHolder, position: Int) {
         holder.initialize(booklist[position],listener)
-//        holder.itemView.setOnClickListener{
-//            selectedItemPosition=position.toInt()
-//            notifyDataSetChanged()
-//        }
-//        if(selectedItemPosition==position)
-//        {
-//            holder.constraintLayout.setBackgroundColor(Color.parseColor("#FF9800"))
-//        }
-
     }
 
     override fun getItemCount(): Int {

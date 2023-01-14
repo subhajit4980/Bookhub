@@ -5,28 +5,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ProgressBar
+    <com.github.ybq.android.spinkit.SpinKitView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/progress_bar"
+        style="@style/SpinKitView.Large.DoubleBounce"
+        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/dark_orange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints,RedundantNamespace" />
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0">
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <EditText
@@ -51,10 +56,10 @@
             android:background="@drawable/edit_text"
             android:drawableLeft="@drawable/ic_baseline_email_24"
             android:ems="10"
-            android:paddingRight="5dp"
             android:hint=" Email address"
             android:inputType="textEmailAddress"
             android:paddingLeft="15dp"
+            android:paddingRight="5dp"
             android:textSize="17sp" />
 
         <EditText
@@ -77,27 +82,26 @@
             android:layout_height="45dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/edit_text"
-            android:drawableLeft="@drawable/ic_baseline_phone_24"
+            android:drawableStart="@drawable/ic_baseline_phone_24"
             android:ems="10"
             android:hint="Phone Number"
-            android:paddingRight="5dp"
             android:inputType="phone|number"
-
-            android:paddingLeft="15dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="5dp"
             android:textSize="17sp" />
 
         <EditText
             android:id="@+id/dob"
-            android:headerBackground="@color/grey_font"
-            android:paddingRight="5dp"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/edit_text"
             android:drawableLeft="@drawable/ic_baseline_date_range_24"
+            android:headerBackground="@color/grey_font"
             android:hint=" DATE OF BIRTH"
             android:inputType="date"
             android:paddingLeft="15dp"
+            android:paddingRight="5dp"
             tools:ignore="Autofill,HardcodedText,RtlHardcoded,RtlSymmetry" />
     </LinearLayout>
 
@@ -105,6 +109,7 @@
         android:id="@+id/signupbtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
         android:background="@drawable/btn"
         android:text="register"
         android:textColor="@color/white"
@@ -112,11 +117,14 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.365"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.588"
+        app:layout_constraintVertical_bias="0.86"
         app:layout_constraintWidth_percent=".8"
         tools:ignore="MissingConstraints" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.bookhub.Adapter_files
+package com.example.bookhub.Adapter
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.bookhub.Pdfviewer
+import com.example.bookhub.BookActivity.Pdfviewer
+//import com.example.bookhub.Pdfviewer
 import com.example.bookhub.R
 import java.util.ArrayList
 

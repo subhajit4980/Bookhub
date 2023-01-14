@@ -8,6 +8,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
+import com.example.bookhub.startup.wellcomeuser
 
 class MainActivity : AppCompatActivity() {
     val SPLASH_SCREEN=5000
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         title_txt.animation=bottomAnimation
         develop_txt.animation=bottomAnimation
         Handler().postDelayed({
-            val intent=Intent(this,wellcomeuser::class.java)
+            val intent=Intent(this, wellcomeuser::class.java)
             startActivity(intent)
             finish()
         },SPLASH_SCREEN.toLong())

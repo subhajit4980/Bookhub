@@ -45,7 +45,9 @@
         <entry key="..\:/Users/subhajit/Desktop/BookHUB/app/src/main/res/drawable/custon_password.xml" value="0.2065" />
         <entry key="..\:/Users/subhajit/Desktop/BookHUB/app/src/main/res/drawable/email.xml" value="0.1735" />
         <entry key="..\:/Users/subhajit/Desktop/BookHUB/app/src/main/res/drawable/empty.xml" value="0.21" />
+        <entry key="..\:/Users/subhajit/Desktop/BookHUB/app/src/main/res/drawable/grad.xml" value="0.24" />
         <entry key="..\:/Users/subhajit/Desktop/BookHUB/app/src/main/res/drawable/gradient.xml" value="0.1735" />
+        <entry key="..\:/Users/subhajit/Desktop/BookHUB/app/src/main/res/drawable/homeimg.xml" value="0.24" />
         <entry key="..\:/Users/subhajit/Desktop/BookHUB/app/src/main/res/drawable/ic_baseline_add_a_photo_24.xml" value="0.2245" />
         <entry key="..\:/Users/subhajit/Desktop/BookHUB/app/src/main/res/drawable/ic_baseline_bookmark_add_24.xml" value="0.2425" />
         <entry key="..\:/Users/subhajit/Desktop/BookHUB/app/src/main/res/drawable/ic_baseline_bookmark_added_24.xml" value="0.262" />
@@ -69,6 +71,9 @@
         <entry key="..\:/Users/subhajit/Desktop/BookHUB/app/src/main/res/layout/activity_pdfviewer.xml" value="0.264" />
         <entry key="..\:/Users/subhajit/Desktop/BookHUB/app/src/main/res/layout/activity_story_audio.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/subhajit/Desktop/BookHUB/app/src/main/res/layout/activity_wellcomeuser.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/subhajit/Desktop/BookHUB/app/src/main/res/layout/activity_write_story.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/subhajit/Desktop/BookHUB/app/src/main/res/layout/audio_record.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/subhajit/Desktop/BookHUB/app/src/main/res/layout/audiodata.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/subhajit/Desktop/BookHUB/app/src/main/res/layout/bookmark.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/subhajit/Desktop/BookHUB/app/src/main/res/layout/content_audio_story.xml" value="0.23645833333333333" />
         <entry key="..\:/Users/subhajit/Desktop/BookHUB/app/src/main/res/layout/data.xml" value="0.264" />

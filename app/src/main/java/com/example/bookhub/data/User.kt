@@ -1,4 +1,4 @@
-package com.example.bookhub
+package com.example.bookhub.data
 
 import com.google.firebase.auth.FirebaseUser
 

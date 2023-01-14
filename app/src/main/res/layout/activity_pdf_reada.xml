@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".PdfReada">
+    tools:context=".BookActivity.PdfReada">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tool_bar"
         android:layout_width="match_parent"
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/textv"
         />
-    <com.github.barteksc.pdfviewer.PDFView
+    <WebView
         android:id="@+id/pdfview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

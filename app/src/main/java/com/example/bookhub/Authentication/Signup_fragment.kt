@@ -1,4 +1,4 @@
-package com.example.bookhub
+package com.example.bookhub.Authentication
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -9,10 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.bookhub.databinding.SignupFragmentBinding
+import com.example.bookhub.R
+import com.example.bookhub.data.User
+import com.github.ybq.android.spinkit.SpinKitView
+//import com.example.bookhub.databinding.SignupFragmentBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -52,7 +54,7 @@ fun createuser(){
         val memail=email.text.toString()
         val mpassword=password.text.toString()
         val fAuth:FirebaseAuth= FirebaseAuth.getInstance()
-        val progressbar:ProgressBar=root!!.findViewById(R.id.progress_bar)
+        val progressbar:SpinKitView=root!!.findViewById(R.id.progress_bar)
         try {
             if (email.text.toString().isEmpty())
             {
@@ -82,7 +84,7 @@ fun createuser(){
                             "Verification Email Has been Sent.\n Verify Your Email to use this app",
                             Toast.LENGTH_SHORT
                         ).show()
-                        val intent:Intent= Intent(activity,Loginhome::class.java)
+                        val intent:Intent= Intent(activity, Loginhome::class.java)
                         intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
                         startActivity(intent)
                         activity!!.finish()
@@ -94,9 +96,9 @@ fun createuser(){
                         progressbar.visibility=View.GONE
                     }
                     ref= FirebaseDatabase.getInstance().getReference("bookhub/users")
-                    val getid=ref.push().key
+//                    val getid=ref.push().key
                     val currenuser=fAuth.currentUser!!.uid
-                    val User=User(fullname.text.toString(),email.text.toString(),password.text.toString(),phone.text.toString(),dob.text.toString(),"create your won bio",)
+                    val User= User(fullname.text.toString(),email.text.toString(),password.text.toString(),phone.text.toString(),dob.text.toString(),"create your won bio",)
                     ref.child(currenuser).setValue(User).addOnSuccessListener {
                         ffullname.text.clear()
                         email.text.clear()

@@ -1,4 +1,4 @@
-package com.example.bookhub
+package com.example.bookhub.Authentication
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -11,6 +11,9 @@ import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.example.bookhub.Home
+import com.example.bookhub.R
+import com.github.ybq.android.spinkit.SpinKitView
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 
@@ -21,10 +24,10 @@ class Login_fragment():Fragment() {
     {
         val memail: EditText = root!!.findViewById(R.id.email)
         val mpassword: EditText =root!!.findViewById(R.id.password)
-        val progressBar: ProgressBar =root!!.findViewById(R.id.progress_bar)
+        val progressBar: SpinKitView =root!!.findViewById(R.id.progress_bar)
         val pass_error:TextView=root!!.findViewById(R.id.password_error)
-        val rightAnimation: Animation? = AnimationUtils.loadAnimation(activity,R.anim.rightt_left)
-        val leftAnimation: Animation? = AnimationUtils.loadAnimation(activity,R.anim.left_right)
+        val rightAnimation: Animation? = AnimationUtils.loadAnimation(activity, R.anim.rightt_left)
+        val leftAnimation: Animation? = AnimationUtils.loadAnimation(activity, R.anim.left_right)
         val layemail:TextInputLayout=root!!.findViewById(R.id.tvemail)
         val laypass:TextInputLayout=root!!.findViewById(R.id.tvpass)
         pass_error.animation=leftAnimation
@@ -37,12 +40,10 @@ class Login_fragment():Fragment() {
                 return
             }
             if (mpassword.text.toString().isEmpty()) {
-//                mpassword.error = "."
                 pass_error.text="Password is Required *"
                 return
             }
             if (mpassword.text.toString().length < 6) {
-//                mpassword.error = "Password Must be greater than 6 Characters"
                 pass_error.text="Password Must be greater than 6 Characters *"
                 return
             }
@@ -53,7 +54,7 @@ class Login_fragment():Fragment() {
                     if(fAuth.currentUser!!.isEmailVerified){
                         Toast.makeText(activity, "Logged in Successfully", Toast.LENGTH_SHORT)
                             .show()
-                        startActivity(Intent(activity,Home::class.java))
+                        startActivity(Intent(activity, Home::class.java))
                         activity!!.finish()
                     }
                     else{

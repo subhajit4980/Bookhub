@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="5.8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/head"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        tools:ignore="MissingConstraints">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/picu"
+            android:layout_weight=".0"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="4dp"
+            android:padding="2.6dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/pic"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/pp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:layout_weight="2.8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="5dp"
+            android:text="suabhjit patra"
+            android:textSize="21dp" />
+
+        <ImageView
+            android:id="@+id/more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:visibility="gone"
+            android:src="@drawable/ic_baseline_more_horiz_24"
+            />
+    </LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cont"
+        android:foreground="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/head"
+        tools:ignore="MissingConstraints">
+        <ImageView
+            android:id="@+id/stimg"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintHeight_max="250dp"
+            tools:ignore="MissingConstraints" />
+        <TextView
+            android:id="@+id/ptitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The story of ghost"
+            android:textSize="20sp"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            app:layout_constraintTop_toBottomOf="@id/stimg"
+            tools:ignore="MissingConstraints" />
+        <TextView
+            android:id="@+id/descrip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="once upon a time there was a ghost who eat one human everyday "
+            android:textSize="15sp"
+            android:paddingStart="5dp"
+            android:maxLines="3"
+            android:paddingEnd="5dp"
+            app:layout_constraintTop_toBottomOf="@id/ptitle"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/v1"
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/cont"/>
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@id/v1"
+        android:id="@+id/comp"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:background="#DADADA"
+        tools:ignore="MissingConstraints">
+       <LinearLayout
+           android:layout_weight="1"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal"
+           android:layout_gravity="center_vertical"
+           android:weightSum="2">
+           <ImageView
+               android:id="@+id/like"
+               android:layout_weight="1"
+               android:layout_width="wrap_content"
+               android:layout_height="30dp"
+               android:layout_gravity="right"
+               android:src="@drawable/ic_baseline_favorite_border_24"
+               />
+           <TextView
+               android:id="@+id/noLikes"
+               android:layout_weight="2"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_vertical"
+               android:text="56"/>
+       </LinearLayout>
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_baseline_comment_24"
+            />
+        <ImageView
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_baseline_share_24"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/comp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+<!--        need to implement-->
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height=".5dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/comp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -12,4 +12,5 @@
     <color name="dark_grey">#656262</color>
     <color name="transparent">#00FF9800</color>
     <color name="GREEN">#4FFF03</color>
+    <color name="pbutton">#885406</color>
 </resources>

@@ -1,9 +1,12 @@
-package com.example.bookhub
+package com.example.bookhub.startup
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.example.bookhub.Home
+import com.example.bookhub.Authentication.Loginhome
+import com.example.bookhub.R
 import com.google.firebase.auth.FirebaseAuth
 
 class wellcomeuser : AppCompatActivity() {
@@ -14,11 +17,11 @@ class wellcomeuser : AppCompatActivity() {
         val fAuth: FirebaseAuth = FirebaseAuth.getInstance()
         if(fAuth.currentUser !=null && fAuth.currentUser!!.isEmailVerified)
         {
-            startActivity(Intent(this,Home::class.java))
+            startActivity(Intent(this, Home::class.java))
             finish()
         }
         btn.setOnClickListener{
-            startActivity(Intent(this,Loginhome::class.java))
+            startActivity(Intent(this, Loginhome::class.java))
             finish()
         }
     }
