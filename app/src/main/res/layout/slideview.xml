@@ -113,6 +113,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/writestory"
                     android:foreground="?attr/selectableItemBackground"
                     android:clickable="true"
                     android:focusable="true"
@@ -124,7 +125,6 @@
                     app:cardCornerRadius="20dp">
 
                     <ImageView
-                        android:id="@+id/writestory"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_gravity="center"

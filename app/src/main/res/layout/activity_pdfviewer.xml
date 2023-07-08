@@ -1,83 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/pdf12"
-    android:weightSum="100">
-    <ScrollView
+    android:id="@+id/pdfcover">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="none"
+    android:id="@+id/scroll"
+    tools:ignore="MissingConstraints">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/mainContent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible"
+        tools:layout_editor_absoluteX="-34dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            app:cardElevation="25dp"
+            android:layout_marginTop="55dp"
+            app:cardCornerRadius="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/black"
             >
             <ImageView
-                android:id="@+id/back"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="start"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
-                android:padding="5dp"
-                android:background="@drawable/btn"
-                android:elevation="10dp"
-                android:src="@drawable/ic_baseline_arrow_back_24" />
-            <ImageView
-                android:layout_width="350dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:layout_height="350dp"
                 android:id="@+id/image"
-                android:scaleType="fitCenter"
-                android:src="@drawable/book1"/>
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="4dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image"
+            app:layout_constraintVertical_bias="0.92"
+            tools:ignore="MissingConstraints">
 
             <TextView
+                android:id="@+id/image_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/image_description"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
                 android:text="Canada"
                 android:textAlignment="center"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center"
-                android:textStyle="bold"
-                android:textSize="20sp"
                 android:textColor="#000"
-                />
-            <androidx.appcompat.widget.AppCompatButton
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <com.skyhope.showmoretextview.ShowMoreTextView
+                android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/view_pdf"
-                android:text="View pdf"
-                android:textStyle="bold"
-                android:textColorHighlight="@color/dark_orange"
-                android:textColor="@color/black"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"/>
+                android:layout_marginTop="20dp"
+                android:gravity="start"
+                android:padding="10dp"
+                android:text="This method should calculate the ticket cost based on the number of tickets as follows,If the availableTickets is greater than or equal to the number of  tickets, then calculate and return the ticket cost"
+                android:textColor="#272727"
+                android:textStyle="italic"
+                tools:ignore="HardcodedText" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/view_pdf"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="View pdf"
+                android:textColor="@color/black"
+                android:textColorHighlight="@color/dark_orange"
+                android:textStyle="bold" />
+
             <androidx.appcompat.widget.AppCompatRatingBar
                 android:id="@+id/ratingbar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:rating="0"
-                android:numStars="5"
-                android:layout_marginTop="20dp"
                 android:layout_gravity="center"
-                android:stepSize="1"
-                android:secondaryProgressTint="@color/dark_orange"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="25dp"
+                android:numStars="5"
                 android:progressTint="@color/dark_orange"
-                />
+                android:rating="0"
+                android:secondaryProgressTint="@color/dark_orange"
+                android:stepSize="1" />
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/rateingButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="submit"
-                android:textStyle="bold"
                 android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="80dp"
                 android:background="@drawable/btn"
                 android:backgroundTint="#FF9D0E"
-                />
+                android:text="submit"
+                android:textStyle="bold"
+                android:visibility="gone" />
         </LinearLayout>
-
-    </ScrollView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/btn"
+        android:elevation="10dp"
+        android:padding="5dp"
+        android:src="@drawable/ic_baseline_arrow_back_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.01000002"
+        tools:ignore="MissingConstraints" />
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:progressTint="@color/dark_orange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/scroll"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/scroll"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.429"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

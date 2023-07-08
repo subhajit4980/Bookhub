@@ -66,7 +66,8 @@
         android:layout_height="match_parent"
         android:id="@+id/audio_post"
         >
-        <include layout="@layout/audio_record"/>
+        <include layout="@layout/audio_record"
+            android:id="@+id/includelayout"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
 <!--<androidx.constraintlayout.widget.ConstraintLayout-->

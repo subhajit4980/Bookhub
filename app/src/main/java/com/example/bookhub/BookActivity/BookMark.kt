@@ -6,38 +6,38 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.bookhub.Adapter.MyAdapter
-import com.example.bookhub.R
-import com.example.bookhub.data.books
+import com.example.bookhub.Adapter.Bookmark_Adapter
+import com.example.bookhub.data.BookData
+import com.example.bookhub.databinding.BookmarkBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.bookmark.*
-import kotlinx.android.synthetic.main.bookmark.search
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
-class BookMark : AppCompatActivity(),MyAdapter.OnItemClickListner {
-//    private lateinit var favBooksArrayList: ArrayList<Fav_Book>
-//    private lateinit var book_title:ArrayList<String>
-//    private lateinit var book_author:ArrayList<String>
+
+class BookMark : AppCompatActivity(),Bookmark_Adapter.OnItemClickListner {
     private lateinit var dbref:DatabaseReference
     private lateinit var booksRecyclerView: RecyclerView
-    private lateinit var booksArrayList: ArrayList<books>
-    lateinit var adapter: MyAdapter
+    private lateinit var booksArrayList: ArrayList<BookData>
+    private var db = Firebase.firestore
+    lateinit var adapter: Bookmark_Adapter
+    private lateinit var binding:BookmarkBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.bookmark)
-        booksRecyclerView=findViewById(R.id.rc)
+        binding=BookmarkBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        booksRecyclerView=binding.rc
         booksRecyclerView.layoutManager= LinearLayoutManager(this)
         booksRecyclerView.setHasFixedSize(true)
-        booksArrayList= arrayListOf<books>()
+        booksArrayList= arrayListOf<BookData>()
         getBooksData()
-        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+        binding.search.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             @SuppressLint("DefaultLocale")
             override fun onQueryTextSubmit(querry: String?): Boolean {
-                search.clearFocus()
+                binding.search.clearFocus()
                 if (querry != null) {
                     submitFliter(querry)
                 }
@@ -50,57 +50,53 @@ class BookMark : AppCompatActivity(),MyAdapter.OnItemClickListner {
                 return false
             }
         })
-        back.setOnClickListener{
+        binding.back.setOnClickListener{
             finish()
         }
-//        checkIfEmpty()
     }
 
     private fun getBooksData() {
-        dbref=FirebaseDatabase.getInstance().getReference("bookhub/users/${FirebaseAuth.getInstance().currentUser!!.uid}/bookmark/favouritList")
-        dbref.addValueEventListener(object : ValueEventListener{
-            override fun onDataChange(snapshot: DataSnapshot) {
-                booksArrayList.clear()
-                try{
-                    if(snapshot.exists()){
-                        for (bookSnapshot in snapshot.children)
+        val emptyView = binding.viewEmpty
+        db.collection("users").document(FirebaseAuth.getInstance().currentUser!!.uid).collection("bookmark").addSnapshotListener{
+            v,e->
+            val bookmark= arrayListOf<String>()
+            if (v != null) {
+                for(doc in v) {
+                    bookmark.add(doc.id)
+                }
+                db.collection("Books").addSnapshotListener { snapshot, error ->
+                    booksArrayList.clear()
+                    if(!snapshot!!.isEmpty)
+                    {
+                        for(doc in snapshot)
                         {
-                            val book= bookSnapshot.getValue(books::class.java)!!
-                            booksArrayList.add(book)
+                            if(bookmark.contains(doc.id)){
+                                val book = doc.toObject(BookData::class.java)
+                                booksArrayList.add(book)
+                            }
                         }
-                        adapter= MyAdapter(booksArrayList,this@BookMark,this@BookMark)
-                        booksRecyclerView.adapter=adapter
-                        rc.visibility=View.VISIBLE
-                        view_empty.visibility=View.GONE
-                    }
-                    else{
-                        adapter= MyAdapter(booksArrayList,this@BookMark,this@BookMark)
-                        booksRecyclerView.adapter=adapter
-                        view_empty.visibility=View.VISIBLE
+                        adapter = Bookmark_Adapter(booksArrayList, this, this)
+                        booksRecyclerView.adapter = adapter
+                        emptyView.root.visibility=View.GONE
                     }
                 }
-                catch (e:Exception)
-                {
-                    Toast.makeText(this@BookMark, e.message, Toast.LENGTH_SHORT).show()
-                }
+            }else{
+                emptyView.root.visibility=View.VISIBLE
             }
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
+        }
 
-        })
     }
     @SuppressLint("DefaultLocale")
     private fun filter(e:String)
     {
-        val filteritem=ArrayList<books>()
+        val filteritem=ArrayList<BookData>()
         for(item in booksArrayList){
             if (item.title!!.toLowerCase().contains(e.toLowerCase()))
             {
                 filteritem.add(item)
             }
         }
-        booksRecyclerView.adapter = MyAdapter(filteritem,this,this)
+        booksRecyclerView.adapter = Bookmark_Adapter(filteritem,this,this)
     }
     @SuppressLint("DefaultLocale")
     private fun submitFliter(querry : String){
@@ -117,19 +113,13 @@ class BookMark : AppCompatActivity(),MyAdapter.OnItemClickListner {
         catch(e:Exception){
         }
     }
-    private fun checkIfEmpty() {
-//            val emptyViewVisible = rc!!.adapter!!.itemCount == 0
-//            view_empty!!.visibility = if (emptyViewVisible) View.VISIBLE else View.GONE
-//            rc!!.visibility = if (emptyViewVisible) View.GONE else View.VISIBLE
-
-    }
-    override fun onItemClick(item: books, position: Int) {
-        var Pdf_image:String=""
-        val intent= Intent(this, Pdfviewer::class.java)
-        intent.putExtra("title",item.title)
-        intent.putExtra("image_url",Pdf_image)
-        intent.putExtra("pdfname",item.pdfname)
-        intent.putExtra("author",item.author)
+    override fun onItemClick(item: BookData, position: Int) {
+        val intent = Intent(this, Pdfviewer::class.java)
+        intent.putExtra("title", item.title)
+        intent.putExtra("image_url", item.imgurl)
+        intent.putExtra("pdf_url", item.pdfurl)
+        intent.putExtra("author", item.author)
+        intent.putExtra("bookid",item.bookid)
         startActivity(intent)
     }
 }

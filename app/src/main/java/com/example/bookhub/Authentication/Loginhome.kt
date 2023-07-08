@@ -62,7 +62,6 @@ class Loginhome : AppCompatActivity() {
         }
 
         // returns which item is selected from arraylist of titles.
-        @Nullable
         override fun getPageTitle(position: Int): CharSequence {
             return fragmentTitleList1.get(position)
         }

@@ -3,12 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.bookhub">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".Networking.NetworkSecurity"
@@ -19,8 +26,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookHUB">
         <activity
-            android:name=".Write_story"
+            android:name=".WriteStory.Post_UI"
             android:exported="false" />
+        <activity
+            android:name=".BookActivity.Upload_Book"
+            android:exported="false" />
+        <activity
+            android:name=".WriteStory.Read_Post"
+            android:exported="false"
+            tools:ignore="MissingClass">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".WriteStory.Write_story"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".story_audio"
             android:exported="false"
@@ -103,6 +125,9 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.bumptech.glide.module.AppGlideModule"
+            android:value=".MyAppGlideModule" />
     </application>
 
 </manifest>

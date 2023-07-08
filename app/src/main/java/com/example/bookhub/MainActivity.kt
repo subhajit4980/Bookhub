@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             val intent=Intent(this, wellcomeuser::class.java)
             startActivity(intent)
             finish()
-        },SPLASH_SCREEN.toLong())
+        },1500)
 
     }
 }

@@ -6,19 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.bookhub.R
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import com.makeramen.roundedimageview.RoundedImageView
 import android.content.Context
-import android.widget.ImageView
-import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.bookhub.data.AudioData
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.data.view.*
 class AudioAdapter(private  val audiolist:ArrayList<AudioData>, var listener: OnItemClickListner, private val context: Context):
     RecyclerView.Adapter<AudioAdapter.MyVIewHolder> () {
     //    private val context: Context

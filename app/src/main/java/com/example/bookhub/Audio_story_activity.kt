@@ -17,36 +17,32 @@ import android.util.Log
 import android.view.View
 import android.widget.Chronometer
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bookhub.Adapter.AudioAdapter
-import com.example.bookhub.Adapter.MyAdapter
-import com.example.bookhub.R
 import com.example.bookhub.data.AudioData
-import com.example.bookhub.data.books
-import com.google.android.gms.tasks.OnSuccessListener
+import com.example.bookhub.databinding.ActivityAudioStoryBinding
+import com.example.bookhub.databinding.AudioRecordBinding
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.google.firebase.storage.UploadTask
-import kotlinx.android.synthetic.main.activity_audio_story.*
-import kotlinx.android.synthetic.main.audio_record.*
-import kotlinx.android.synthetic.main.pop_upload.*
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
-import javax.annotation.Nullable
 
 
 private const val REQUEST_RECORD_AUDIO_PERMISSION = 200
 private const val PICK_FILE = 99
 private var uri: Uri?=null
+private lateinit var binding:ActivityAudioStoryBinding
+private lateinit var _binding:AudioRecordBinding
 class Audio_story_activity : AppCompatActivity(),AudioAdapter.OnItemClickListner {
     var mydialog: Dialog? = null
     var uploadDialog: Dialog? = null
@@ -83,12 +79,14 @@ class Audio_story_activity : AppCompatActivity(),AudioAdapter.OnItemClickListner
     @SuppressLint("SimpleDateFormat", "SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_audio_story)
+        binding= ActivityAudioStoryBinding.inflate(layoutInflater)
+         _binding= AudioRecordBinding.bind(binding.includelayout.root)
+        setContentView(binding.root)
 //        setContentView(R.layout.audio_record)
         chronometer=findViewById(R.id.chronometer)
         chronometer!!.base=SystemClock.elapsedRealtime()
 
-        audioRecyclerView = findViewById(R.id.recyclerView)
+        audioRecyclerView = binding.recyclerView
         audioRecyclerView.layoutManager = LinearLayoutManager(this)
         audioRecyclerView.setHasFixedSize(true)
         audioList = arrayListOf<AudioData>()
@@ -105,18 +103,18 @@ class Audio_story_activity : AppCompatActivity(),AudioAdapter.OnItemClickListner
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION)
 
 
-        addpost.setOnClickListener {
-            send.visibility=View.GONE
-            home_view.visibility = View.GONE
-            audio_post.visibility = View.VISIBLE
-            mic.visibility = View.VISIBLE
-            recordComp.visibility = View.GONE
+        binding.addpost.setOnClickListener {
+            _binding.send.visibility=View.GONE
+            binding.homeView.visibility = View.GONE
+            binding.audioPost.visibility = View.VISIBLE
+            _binding.mic.visibility = View.VISIBLE
+            _binding.recordComp.visibility = View.GONE
         }
-        backhome.setOnClickListener {
-            home_view.visibility = View.VISIBLE
-            audio_post.visibility = View.GONE
-            animation_view.visibility = View.GONE
-            send.visibility=View.GONE
+        _binding.backhome.setOnClickListener {
+            binding.homeView.visibility = View.VISIBLE
+            binding.audioPost.visibility = View.GONE
+            _binding.animationView.visibility = View.GONE
+            _binding.send.visibility=View.GONE
             chronometer!!.base=SystemClock.elapsedRealtime()
             pauseoffset=0
             if(running)
@@ -125,18 +123,18 @@ class Audio_story_activity : AppCompatActivity(),AudioAdapter.OnItemClickListner
                 pauseoffset=SystemClock.elapsedRealtime()- chronometer!!.base
                 running=false
             }
-            textView5.visibility=View.VISIBLE
+            _binding.textView5.visibility=View.VISIBLE
         }
 
 
-        mic.setOnClickListener {
-            recordComp.visibility = View.VISIBLE
-            mic.visibility = View.GONE
+        _binding.mic.setOnClickListener {
+            _binding.recordComp.visibility = View.VISIBLE
+            _binding.mic.visibility = View.GONE
             vibration()
-            textView5.visibility = View.GONE
-            animation_view.visibility = View.VISIBLE
-            animation_view.playAnimation()
-            send.visibility = View.VISIBLE
+            _binding.textView5.visibility = View.GONE
+            _binding.animationView.visibility = View.VISIBLE
+            _binding.animationView.playAnimation()
+            _binding.send.visibility = View.VISIBLE
 
             val sdf:SimpleDateFormat= SimpleDateFormat("dd.MM.yy_HH.mm.SS")
             fname=sdf.format(Date()).toString()
@@ -149,78 +147,75 @@ class Audio_story_activity : AppCompatActivity(),AudioAdapter.OnItemClickListner
         }
 
 
-        stop.setOnClickListener(View.OnClickListener { v->
-            recordComp.visibility = View.GONE
-            animation_view.visibility = View.GONE
-            mic.visibility = View.VISIBLE
-            textView5.visibility = View.VISIBLE
-            send.visibility = View.GONE
-            vibration()
-            chronometer!!.base=SystemClock.elapsedRealtime()
-            pauseoffset=0
-            if(running)
-            {
-                chronometer!!.stop()
-                pauseoffset=SystemClock.elapsedRealtime()- chronometer!!.base
-                running=false
+        _binding.apply {
+            stop.setOnClickListener(View.OnClickListener { v ->
+                recordComp.visibility = View.GONE
+                animationView.visibility = View.GONE
+                mic.visibility = View.VISIBLE
+                textView5.visibility = View.VISIBLE
+                send.visibility = View.GONE
+                vibration()
+                chronometer!!.base = SystemClock.elapsedRealtime()
+                pauseoffset = 0
+                if (running) {
+                    chronometer!!.stop()
+                    pauseoffset = SystemClock.elapsedRealtime() - chronometer!!.base
+                    running = false
+                }
+                stopRecording()
+                val namefile = EditText(v.context)
+                val passwordResetDialog = androidx.appcompat.app.AlertDialog.Builder(v.context)
+                passwordResetDialog.setTitle("Save Record ?")
+                passwordResetDialog.setMessage("save and rename the file")
+                namefile.setText("${fname.toString()}")
+                passwordResetDialog.setView(namefile)
+                passwordResetDialog.setPositiveButton(
+                    "OK"
+                ) { dialog, which -> // extract the email and send reset link
+                    File(Environment.getExternalStorageDirectory().absolutePath + "/BookHUB/${fname.toString()}.mp3").renameTo(
+                        File(Environment.getExternalStorageDirectory().absolutePath + "/BookHUB/${namefile.text.toString()}.mp3")
+                    )
+                }
+
+                passwordResetDialog.setNegativeButton(
+                    "Delete"
+                ) { dialog, which ->
+                    // close the dialog
+                    File(Environment.getExternalStorageDirectory().absolutePath + "/BookHUB/${fname.toString()}.mp3").delete()
+                }
+                passwordResetDialog.create().show()
+            })
+            play.setOnClickListener {
+                vibration()
+                animationView.visibility = View.VISIBLE
+                animationView.playAnimation()
+                //            start choronometer
+                if (!running) {
+                    chronometer!!.base = SystemClock.elapsedRealtime() - pauseoffset
+                    chronometer!!.start()
+                    running = true
+                }
+                resumeRecording()
             }
-            stopRecording()
-            val namefile = EditText(v.context)
-            val passwordResetDialog = androidx.appcompat.app.AlertDialog.Builder(v.context)
-            passwordResetDialog.setTitle("Save Record ?")
-            passwordResetDialog.setMessage("save and rename the file")
-            namefile.setText("${fname.toString()}")
-            passwordResetDialog.setView(namefile)
-            passwordResetDialog.setPositiveButton(
-                "OK"
-            ) { dialog, which -> // extract the email and send reset link
-                File(Environment.getExternalStorageDirectory().absolutePath+"/BookHUB/${fname.toString()}.mp3").
-                renameTo(File(Environment.getExternalStorageDirectory().absolutePath+"/BookHUB/${namefile.text.toString()}.mp3"))
-            }
-
-            passwordResetDialog.setNegativeButton(
-                "Delete"
-            ) { dialog, which ->
-                // close the dialog
-                File(Environment.getExternalStorageDirectory().absolutePath+"/BookHUB/${fname.toString()}.mp3").delete()
-            }
-            passwordResetDialog.create().show()
-        })
 
 
-        play.setOnClickListener {
-            vibration()
-            animation_view.visibility = View.VISIBLE
-            animation_view.playAnimation()
-            //            start choronometer
-            if (!running)
-            {
-                chronometer!!.base=SystemClock.elapsedRealtime()- pauseoffset
-                chronometer!!.start()
-                running=true
-            }
-            resumeRecording()
-        }
-
-
-        pause.setOnClickListener {
-            animation_view.visibility = View.VISIBLE
-            vibration()
-            animation_view.pauseAnimation()
+            pause.setOnClickListener {
+                animationView.visibility = View.VISIBLE
+                vibration()
+                animationView.pauseAnimation()
 //            pause chronometer
-            if(running)
-            {
-                chronometer!!.stop()
-                pauseoffset=SystemClock.elapsedRealtime()- chronometer!!.base
-                running=false
+                if (running) {
+                    chronometer!!.stop()
+                    pauseoffset = SystemClock.elapsedRealtime() - chronometer!!.base
+                    running = false
+                }
+                pauseRecording()
+
             }
-            pauseRecording()
-
         }
-
         uploadDialog = Dialog(this)
         progressDialog= ProgressDialog(this)
-        send.setOnClickListener {
+        _binding.send.setOnClickListener {
             if(running)
             {
                 chronometer!!.stop()
@@ -228,14 +223,16 @@ class Audio_story_activity : AppCompatActivity(),AudioAdapter.OnItemClickListner
                 running=false
             }
             stopRecording()
-            animation_view.pauseAnimation()
+            _binding.animationView.pauseAnimation()
             uploadDialog!!.setContentView(R.layout.pop_upload)
-            uploadDialog!!.closep.setOnClickListener {
+            val closep:ImageView=uploadDialog!!.findViewById(R.id.closep)
+            val uploadButton:ImageView=uploadDialog!!.findViewById(R.id.uploadButton)
+            closep.setOnClickListener {
                 uploadDialog!!.dismiss()
             }
             val storyName:TextInputEditText=uploadDialog!!.findViewById(R.id.storyName)
             val disc:TextInputEditText=uploadDialog!!.findViewById(R.id.disc)
-                uploadDialog!!.uploadButton.setOnClickListener {
+               uploadButton.setOnClickListener {
                     if (storyName.toString() != "" && disc.toString() != "") {
                         progressDialog!!.setMessage("Uploading Started")
                         progressDialog!!.show()
@@ -290,10 +287,10 @@ class Audio_story_activity : AppCompatActivity(),AudioAdapter.OnItemClickListner
             uploadDialog!!.show()
             uploadDialog!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         }
-        backmain.setOnClickListener {
+        binding.backmain.setOnClickListener {
             finish()
         }
-        add.setOnClickListener {
+        _binding.add.setOnClickListener {
            val intent:Intent= Intent(Intent.ACTION_OPEN_DOCUMENT)
             intent.addCategory(Intent.CATEGORY_OPENABLE)
             intent.setType("audio/*")
