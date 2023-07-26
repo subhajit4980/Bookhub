@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".WriteStory.Post_UI">
+    tools:context=".UI.Write_Story.Activities.Post_UI">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

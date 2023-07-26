@@ -7,7 +7,7 @@
     android:background="#FF9800"
     android:orientation="vertical"
     android:padding="8dp"
-    tools:context=".MainActivity">
+    tools:context=".UI.MainActivity">
 
     <ImageView
         android:id="@+id/virusc"

@@ -1,0 +1,6 @@
+<!-- custom_seekbar_progress.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="8dp" />
+    <solid android:color="#00FFCC" />
+    <stroke android:color="@color/dark_grey"/>
+</shape>

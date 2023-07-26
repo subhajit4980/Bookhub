@@ -6,12 +6,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.bookhub.data.BookData
+import com.example.bookhub.Models.BookData
 import com.example.bookhub.databinding.DataBinding
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
 import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.Filter
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 
@@ -34,7 +33,7 @@ class BookAdapter (options: FirestoreRecyclerOptions<BookData>,val context: Cont
         holder.binding.apply {
             title.text=model.title
             author.text=model.author
-            review.text=model.review
+            review.text=model.review.toString()
             reader.text=model.reads
         }
         holder.itemView.setOnClickListener {

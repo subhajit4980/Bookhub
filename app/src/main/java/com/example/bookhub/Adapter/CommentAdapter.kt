@@ -19,8 +19,8 @@ import androidx.core.widget.NestedScrollView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bookhub.R
-import com.example.bookhub.Utill.constant
-import com.example.bookhub.data.Comment
+import com.example.bookhub.Utils.common
+import com.example.bookhub.Models.Comment
 import com.example.bookhub.databinding.CommentsBinding
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter
 import com.firebase.ui.firestore.FirestoreRecyclerOptions
@@ -57,11 +57,9 @@ class CommentAdapter(
         holder.binding.apply {
             comments.apply {
                 text = model.comment
-                setShowingLine(3)
-                addShowMoreText(" Read More ")
-                addShowLessText(" Hide ")
-                setShowMoreColor(Color.RED)
-                setShowLessTextColor(Color.RED)
+                setTrimLines(3)
+                setTrimCollapsedText("Read more")
+                setTrimExpandedText("Hide")
             }
             timeago.text = TimeAgo.using(model.time ?: System.currentTimeMillis().toLong().toLong())
 
@@ -69,7 +67,7 @@ class CommentAdapter(
             val storageref =
                 FirebaseStorage.getInstance().reference.child("bookhub/users/$Userid/profile.jpeg")
             storageref.downloadUrl.addOnSuccessListener {
-                if (constant.isValidContextForGlide(context)) {
+                if (common.isValidContextForGlide(context)) {
                     Glide.with(context).load(it).placeholder(R.drawable.pp).into(picu)
                 }
             }

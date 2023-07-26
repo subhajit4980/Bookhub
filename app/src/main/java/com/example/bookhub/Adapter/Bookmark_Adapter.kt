@@ -1,6 +1,7 @@
 package com.example.bookhub.Adapter
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -15,8 +16,9 @@ import android.net.ConnectivityManager
 import android.widget.ImageView
 import android.widget.Toast
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.bookhub.Utill.constant.isValidContextForGlide
-import com.example.bookhub.data.BookData
+import com.example.bookhub.Utils.common.isValidContextForGlide
+import com.example.bookhub.Models.BookData
+import com.example.bookhub.Utils.common.showSnackBar
 import com.example.bookhub.databinding.DataBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -27,7 +29,7 @@ import com.google.firebase.ktx.Firebase
 class Bookmark_Adapter(
     private val booklist: ArrayList<BookData>,
     var listener: OnItemClickListner,
-    private val context: Context
+    private val context: Activity
 ) : RecyclerView.Adapter<Bookmark_Adapter.MyVIewHolder>() {
     //    private val context: Context
     private var selectedItemPosition: Int = 0
@@ -76,15 +78,17 @@ class Bookmark_Adapter(
                         Ref.delete()
 //                        val BM:ImageView=itemView.findViewById(R.id.bookmark)
                         BM.setImageResource(R.drawable.ic_baseline_bookmark_add_24)
-                        Toast.makeText(context, "Bookmark removed successfully", Toast.LENGTH_SHORT)
-                            .show()
+//                        Toast.makeText(context, "Bookmark removed successfully", Toast.LENGTH_SHORT)
+//                            .show()
+                        showSnackBar("Bookmark removed successfully",context.findViewById(android.R.id.content))
                         fvrtChecker = false
                     } else if (fvrtChecker) {
                         Ref.set(item)
 //                        val BM:ImageView=itemView.findViewById(R.id.bookmark)
                         BM.setImageResource(R.drawable.ic_baseline_bookmark_added_24)
-                        Toast.makeText(context, "Bookmark added successfully", Toast.LENGTH_SHORT)
-                            .show()
+//                        Toast.makeText(context, "Bookmark added successfully", Toast.LENGTH_SHORT)
+//                            .show()
+                        showSnackBar("Bookmark added successfully",context.findViewById(android.R.id.content))
                         fvrtChecker = false
                     }
                 }

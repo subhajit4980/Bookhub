@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    android:layout_margin="20dp"
+    app:cardElevation="20dp"
+    tools:ignore="MissingDefaultResource">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        tools:ignore="MissingConstraints">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/delete"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:cardCornerRadius="100dp"
+                app:cardElevation="10dp"
+                android:focusable="true"
+                android:clickable="true"
+                android:foreground="@color/orange"
+                android:layout_margin="2dp">
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="4dp"
+                    android:src="@drawable/ic_baseline_delete_24"
+                    />
+            </com.google.android.material.card.MaterialCardView>
+            <FrameLayout
+                android:id="@+id/frameLayout"
+                android:layout_width="match_parent"
+                app:layout_constraintHeight_max="400dp"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/music" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/gradient_dark" />
+            </FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/frameLayout">
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MY Story"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints" />
+           <androidx.appcompat.widget.LinearLayoutCompat
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal"
+               android:weightSum="2"
+               app:layout_constraintTop_toBottomOf="@+id/title">
+               <androidx.constraintlayout.widget.ConstraintLayout
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="2">
+                   <TextView
+                       android:id="@+id/author"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="subhajit patra"
+                       android:textSize="18sp"
+                       android:textStyle="italic"
+                       android:textColor="@color/white"
+                       android:paddingStart="10dp"
+                       android:paddingEnd="10dp"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       app:layout_constraintStart_toStartOf="parent"
+                       tools:ignore="MissingConstraints" />
+                   <TextView
+                       android:id="@+id/duration"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:text="30 mins ago"
+                       android:textSize="18sp"
+                       android:paddingStart="10dp"
+                       android:textColor="@color/white"
+                       android:paddingEnd="10dp"
+                       app:layout_constraintEnd_toEndOf="parent"
+                       app:layout_constraintStart_toStartOf="parent"
+                       app:layout_constraintTop_toBottomOf="@+id/author"
+                       tools:ignore="MissingConstraints" />
+               </androidx.constraintlayout.widget.ConstraintLayout>
+               <com.google.android.material.card.MaterialCardView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   app:cardCornerRadius="20dp"
+                   android:layout_weight="1"
+                  >
+                   <androidx.constraintlayout.widget.ConstraintLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:padding="8dp">
+
+                       <TextView
+                           android:id="@+id/review"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:gravity="center_horizontal"
+                           android:paddingEnd="10dp"
+                           android:text="  ❤"
+                           android:textColor="@color/white"
+                           android:textSize="20sp"
+                           app:layout_constraintBottom_toTopOf="@+id/listener"
+                           app:layout_constraintEnd_toEndOf="parent"
+                           app:layout_constraintStart_toStartOf="parent"
+                           app:layout_constraintTop_toTopOf="parent"
+                           tools:ignore="MissingConstraints" />
+
+                       <TextView
+                           android:id="@+id/like"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:text="0"
+                           android:textSize="16sp"
+                           android:gravity="center_horizontal"
+                           app:layout_constraintBottom_toBottomOf="parent"
+                           app:layout_constraintEnd_toEndOf="parent"
+                           app:layout_constraintStart_toStartOf="parent"
+                           app:layout_constraintTop_toBottomOf="@+id/review"
+                           tools:ignore="HardcodedText,MissingConstraints" />
+                   </androidx.constraintlayout.widget.ConstraintLayout>
+               </com.google.android.material.card.MaterialCardView>
+
+           </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</com.google.android.material.card.MaterialCardView>

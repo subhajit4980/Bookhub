@@ -5,126 +5,149 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.github.ybq.android.spinkit.SpinKitView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/progress_bar"
-        style="@style/SpinKitView.Large.DoubleBounce"
-        android:visibility="invisible"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        app:SpinKit_Color="@color/dark_orange"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints,RedundantNamespace" />
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-
-        <EditText
-            android:id="@+id/fullname"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/edit_text"
-            android:drawableLeft="@drawable/ic_baseline_person_24"
-            android:ems="18"
-            android:hint=" Full Name"
-            android:inputType="textPersonName"
-            android:paddingLeft="15dp"
-            android:paddingRight="5dp"
-            android:textSize="17sp" />
-
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:autofillHints="emailAddress"
-            android:background="@drawable/edit_text"
-            android:drawableLeft="@drawable/ic_baseline_email_24"
-            android:ems="10"
-            android:hint=" Email address"
-            android:inputType="textEmailAddress"
-            android:paddingLeft="15dp"
-            android:paddingRight="5dp"
-            android:textSize="17sp" />
-
-        <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/edit_text"
-            android:drawableStart="@drawable/ic_baseline_lock_24"
-            android:ems="10"
-            android:hint=" Password"
-            android:inputType="textPassword"
-            android:paddingLeft="15dp"
-            android:paddingRight="5dp"
-            android:textSize="17sp" />
-
-        <EditText
-            android:id="@+id/phone"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/edit_text"
-            android:drawableStart="@drawable/ic_baseline_phone_24"
-            android:ems="10"
-            android:hint="Phone Number"
-            android:inputType="phone|number"
-            android:paddingStart="15dp"
-            android:paddingEnd="5dp"
-            android:textSize="17sp" />
-
-        <EditText
-            android:id="@+id/dob"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/edit_text"
-            android:drawableLeft="@drawable/ic_baseline_date_range_24"
-            android:headerBackground="@color/grey_font"
-            android:hint=" DATE OF BIRTH"
-            android:inputType="date"
-            android:paddingLeft="15dp"
-            android:paddingRight="5dp"
-            tools:ignore="Autofill,HardcodedText,RtlHardcoded,RtlSymmetry" />
-    </LinearLayout>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/signupbtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/btn"
-        android:text="register"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.365"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.86"
-        app:layout_constraintWidth_percent=".8"
-        tools:ignore="MissingConstraints" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
 
+            <EditText
+                android:id="@+id/fullname"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edit_text"
+                android:drawableLeft="@drawable/ic_baseline_person_24"
+                android:ems="18"
+                android:hint=" Full Name"
+                android:inputType="textPersonName"
+                android:paddingLeft="15dp"
+                android:paddingRight="5dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/dark_grey"
+                android:textSize="17sp"
+                tools:ignore="HardcodedText" />
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:layout_marginTop="10dp"
+                android:autofillHints="emailAddress"
+                android:background="@drawable/edit_text"
+                android:drawableStart="@drawable/ic_baseline_email_24"
+                android:ems="10"
+                android:hint=" Email address"
+                android:inputType="textEmailAddress"
+                android:paddingStart="15dp"
+                android:paddingEnd="5dp"
+                android:textSize="17sp"
+                tools:ignore="HardcodedText" />
 
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edit_text"
+                android:drawableStart="@drawable/ic_baseline_lock_24"
+                android:ems="20"
+                android:layout_marginBottom="10dp"
+                android:hint=" Password"
+                android:inputType="textPassword"
+                android:paddingStart="15dp"
+                android:paddingEnd="5dp"
+                android:textSize="17sp"
+                tools:ignore="HardcodedText" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    app:boxCornerRadiusBottomEnd="21dp"
+                    app:boxCornerRadiusBottomStart="21dp"
+                    app:boxCornerRadiusTopEnd="21dp"
+                    app:boxCornerRadiusTopStart="21dp"
+                    app:boxStrokeColor="@color/dark_grey">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="none"
+                        android:text="Select Gender"
+                        android:textSize="17dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="57dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text"
+                    android:drawableLeft="@drawable/ic_baseline_date_range_24"
+                    android:gravity="left|center"
+                    android:hint=" DATE OF BIRTH"
+                    android:inputType=""
+                    android:paddingLeft="15dp"
+                    android:paddingRight="5dp"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    tools:ignore="Autofill,HardcodedText,RtlHardcoded,RtlSymmetry,UseCompatTextViewDrawableXml" />
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/edit_text"
+                android:drawableStart="@drawable/ic_baseline_phone_24"
+                android:ems="10"
+                android:hint="Phone Number"
+                android:inputType="phone|number"
+                android:paddingStart="15dp"
+                android:paddingEnd="5dp"
+                android:textSize="17sp"
+                android:visibility="gone" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/signupbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn"
+            android:paddingStart="100dp"
+            android:paddingEnd="100dp"
+            android:text="register"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:layout_constraintVertical_bias="0.163"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,8 @@
     <color name="dark_orange">#FF9800</color>
     <color name="dark_grey">#656262</color>
     <color name="transparent">#00FF9800</color>
+    <color name="navy_blue">#050319</color>
     <color name="GREEN">#4FFF03</color>
     <color name="pbutton">#885406</color>
+    <color name="thumb">#FF0059</color>
 </resources>

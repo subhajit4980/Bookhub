@@ -8,6 +8,7 @@
         android:required="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
@@ -18,21 +19,25 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
-        android:name=".Networking.NetworkSecurity"
+        android:name=".container.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BookHUB">
+        <service android:name=".Service.MusicPlayerService" />
         <activity
-            android:name=".WriteStory.Post_UI"
+            android:name=".UI.Audio_story.Play_Audio"
             android:exported="false" />
         <activity
-            android:name=".BookActivity.Upload_Book"
+            android:name=".UI.Write_Story.Activities.Post_UI"
             android:exported="false" />
         <activity
-            android:name=".WriteStory.Read_Post"
+            android:name=".UI.BookActivity.Activities.Upload_Book"
+            android:exported="false" />
+        <activity
+            android:name=".UI.Write_Story.Activities.Read_Post"
             android:exported="false"
             tools:ignore="MissingClass">
             <meta-data
@@ -40,35 +45,23 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".WriteStory.Write_story"
+            android:name=".UI.Write_Story.Activities.Write_post"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".story_audio"
-            android:exported="false"
-            android:label="@string/title_activity_story_audio"
-            android:theme="@style/Theme.BookHUB.NoActionBar"
-            tools:ignore="MissingClass" />
-        <activity
-            android:name=".audio_story"
-            android:exported="false"
-            android:label="@string/title_activity_audio_story"
-            android:theme="@style/Theme.BookHUB"
-            tools:ignore="MissingClass" />
-        <activity
-            android:name=".Audio_story_activity"
+            android:name=".UI.Audio_story.Audio_story_activity"
             android:exported="false" />
         <activity
-            android:name=".BookActivity.BookMark"
+            android:name=".UI.BookActivity.Activities.BookMark"
             android:exported="false" />
         <activity
-            android:name=".BookActivity.PdfReada"
-            android:parentActivityName=".BookActivity.Pdfviewer" />
+            android:name=".UI.BookActivity.Activities.Book_Details"
+            android:parentActivityName=".UI.BookActivity.Activities.Pdfviewer" />
         <activity
-            android:name=".BookActivity.Book"
+            android:name=".UI.BookActivity.Activities.Book_Home"
             android:exported="false" />
         <activity
-            android:name=".BookActivity.Pdfviewer"
+            android:name=".UI.BookActivity.Activities.Pdfviewer"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
@@ -78,17 +71,18 @@
             android:theme="@style/Base.Theme.AppCompat"
             tools:ignore="LockedOrientationActivity" /> <!-- optional (needed if default theme has no action bar) -->
         <activity
-            android:name=".Authentication.Login_fragment"
+            android:name=".UI.Authentication.Fragment.Login_fragment"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="Instantiatable,LockedOrientationActivity" />
         <activity
-            android:name=".Authentication.Loginhome"
+            android:name=".UI.Authentication.Activities.Loginhome"
             android:exported="true"
             android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".startup.wellcomeuser"
+            android:name=".UI.startup.wellcomeuser"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
@@ -102,7 +96,7 @@
             android:screenOrientation="portrait"
             tools:ignore="MissingClass" />
         <activity
-            android:name=".Home"
+            android:name=".UI.Home"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity
@@ -111,7 +105,7 @@
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity,MissingClass" />
         <activity
-            android:name=".MainActivity"
+            android:name=".UI.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">

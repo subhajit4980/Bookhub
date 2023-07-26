@@ -7,33 +7,37 @@
     android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constran"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
         app:layout_constraintTop_toBottomOf="@id/appBarLayout"
         tools:ignore="MissingConstraints,NotSibling">
-        <androidx.cardview.widget.CardView
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card"
             android:layout_width="match_parent"
             android:layout_height="196dp"
-            android:id="@+id/card"
             app:cardCornerRadius="20dp"
+            android:layout_margin="10dp"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints">
+
             <com.denzcoskun.imageslider.ImageSlider
-                android:layout_width="match_parent"
                 android:id="@+id/image_slider"
+                android:layout_width="match_parent"
                 android:layout_height="196dp"
-                app:iss_placeholder="@drawable/homeimg"
-                app:iss_title_background="@drawable/homeimg"
                 app:iss_auto_cycle="true"
-                app:iss_selected_dot="@drawable/default_selected_dot"
-                app:iss_unselected_dot="@drawable/default_unselected_dot"
-                app:iss_period="2000"
                 app:iss_delay="0"
+                app:iss_period="2000"
+                app:iss_placeholder="@drawable/homeimg"
+                app:iss_selected_dot="@drawable/default_selected_dot"
+                app:iss_title_background="@drawable/homeimg"
+                app:iss_unselected_dot="@drawable/default_unselected_dot"
                 tools:ignore="MissingConstraints" />
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <LinearLayout
             android:id="@+id/category"
@@ -50,59 +54,81 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/bookL"
+                <com.google.android.material.card.MaterialCardView
                     android:foreground="?attr/selectableItemBackground"
                     android:clickable="true"
                     android:layout_width="90dp"
-                    android:layout_height="90dp"
+                    android:layout_height="110dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#65E7F8"
+                    android:backgroundTint="#D4D4D4"
                     android:outlineSpotShadowColor="@color/dark_grey"
                     app:cardCornerRadius="20dp"
+                    app:cardElevation="7dp"
                     android:focusable="true">
-
-                    <ImageView
-                        android:id="@+id/bookimg"
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/bookL"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="9dp"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="5dp"
-                        android:src="@drawable/book1" />
+                        android:foreground="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_height="90dp"
+                        android:backgroundTint="#FABA5D"
+                        android:outlineSpotShadowColor="@color/dark_grey"
+                        app:cardCornerRadius="20dp"
+                        android:focusable="true">
+                        <ImageView
+                            android:id="@+id/bookimg"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="9dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/book1" />
+                    </com.google.android.material.card.MaterialCardView>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
+                        android:fontFamily="@font/alata"
                         android:text="Books"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-
+                        android:textStyle="bold"
                         tools:ignore="RtlCompat" />
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/story"
+                <com.google.android.material.card.MaterialCardView
                     android:foreground="?attr/selectableItemBackground"
                     android:clickable="true"
                     android:layout_width="90dp"
-                    android:layout_height="90dp"
+                    android:layout_height="110dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#7385E8"
+                    android:backgroundTint="#D4D4D4"
+                    android:outlineSpotShadowColor="@color/dark_grey"
                     app:cardCornerRadius="20dp"
+                    app:cardElevation="7dp"
                     android:focusable="true">
-
-                    <ImageView
-                        android:id="@+id/audioStory"
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/story"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:padding="9dp"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="5dp"
-                        android:src="@drawable/audiobook" />
+                        android:foreground="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_height="90dp"
+                        android:backgroundTint="#1E5CFF"
+                        android:outlineSpotShadowColor="@color/dark_grey"
+                        app:cardCornerRadius="20dp"
+                        android:focusable="true">
+                        <ImageView
+                            android:id="@+id/audioStory"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="9dp"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:src="@drawable/audiobook" />
+                    </com.google.android.material.card.MaterialCardView>
+
 
                     <TextView
                         android:layout_width="match_parent"
@@ -111,135 +137,53 @@
                         android:text="Audio Story"
                         android:textAlignment="center"
                         android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/alata"
                         tools:ignore="RtlCompat" />
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/writestory"
+                <com.google.android.material.card.MaterialCardView
                     android:foreground="?attr/selectableItemBackground"
                     android:clickable="true"
-                    android:focusable="true"
                     android:layout_width="90dp"
-                    android:layout_height="90dp"
+                    android:layout_height="110dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#6BFD71"
-                    app:cardCornerRadius="20dp">
-
-                    <ImageView
+                    android:backgroundTint="#D4D4D4"
+                    android:outlineSpotShadowColor="@color/dark_grey"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="7dp"
+                    android:focusable="true">
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/writestory"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="5dp"
-                        android:src="@drawable/writing" />
+                        android:foreground="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:layout_height="90dp"
+                        android:backgroundTint="#26FF2A"
+                        android:outlineSpotShadowColor="@color/dark_grey"
+                        app:cardCornerRadius="20dp"
+                        android:focusable="true">
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="5dp"
+                            android:src="@drawable/writing" />
+                    </com.google.android.material.card.MaterialCardView>
+
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom"
-                        android:text="write story"
+                        android:text="Story"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-
+                        android:textStyle="bold"
+                        android:fontFamily="@font/alata"
                         tools:ignore="RtlCompat" />
-                </androidx.cardview.widget.CardView>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
-
-                <androidx.cardview.widget.CardView
-                    android:foreground="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="#E785F8"
-                    app:cardCornerRadius="20dp">
-
-                    <ImageView
-                        android:id="@+id/poem"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="5dp"
-                        android:src="@drawable/book1" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:text="poems"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-
-                        tools:ignore="RtlCompat" />
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/exp"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="#FBEA50"
-                    app:cardCornerRadius="20dp">
-
-                    <ImageView
-                        android:id="@+id/experience"
-                        android:layout_width="match_parent"
-                        android:layout_height="66dp"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="5dp"
-                        android:src="@drawable/blogging" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:text="Experience"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-
-                        tools:ignore="RtlCompat" />
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:foreground="?attr/selectableItemBackground"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:layout_width="90dp"
-                    android:layout_height="90dp"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="#F87E75"
-                    app:cardCornerRadius="20dp">
-
-                    <ImageView
-                        android:id="@+id/others"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="5dp"
-                        android:src="@drawable/writing" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:text="Others"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-
-                        tools:ignore="RtlCompat" />
-                </androidx.cardview.widget.CardView>
+                </com.google.android.material.card.MaterialCardView>
             </LinearLayout>
         </LinearLayout>
 
@@ -247,137 +191,43 @@
             android:id="@+id/pbooks"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@id/category">
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardCornerRadius="12dp"
-                android:layout_marginBottom="5dp"
-                >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text=" Most Popular books"
                         android:textSize="20sp"
-                        android:background="#03A9F4"/>
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
                     <androidx.recyclerview.widget.RecyclerView
                         android:paddingTop="8dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/recycleview1"
                         android:orientation="horizontal"/>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
         </androidx.appcompat.widget.LinearLayoutCompat>
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/pstory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
             android:orientation="vertical"
             app:layout_constraintTop_toBottomOf="@id/pbooks">
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardCornerRadius="12dp"
-                android:layout_marginBottom="5dp"
-                >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=" Most Popular stories"
+                        android:text=" Most Popular Audio stories"
                         android:textSize="20sp"
-                        android:background="#349301"/>
+                        android:textColor="@color/black"
+                        android:textStyle="bold"/>
                     <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/AudioRecyclerView"
                         android:paddingTop="8dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/ppoem"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/pstory">
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardCornerRadius="12dp"
-                android:layout_marginBottom="5dp"
-                >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text=" Most Popular poems"
-                        android:textSize="20sp"
-                        android:background="#CD1E5A"/>
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:paddingTop="8dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/pexperience"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/ppoem">
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardCornerRadius="12dp"
-                android:layout_marginBottom="5dp"
-                >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text=" Most Popular experiences"
-                        android:textSize="20sp"
-                        android:background="#5C73F4"/>
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:paddingTop="8dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
+                        tools:listitem="@layout/listitem"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

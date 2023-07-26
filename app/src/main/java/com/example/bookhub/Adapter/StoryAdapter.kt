@@ -24,9 +24,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.bookhub.Adapter.StoryAdapter.*
 import com.example.bookhub.R
-import com.example.bookhub.Utill.constant
-import com.example.bookhub.WriteStory.Read_Post
-import com.example.bookhub.data.Story
+import com.example.bookhub.Utils.common
+import com.example.bookhub.UI.Write_Story.Activities.Read_Post
+import com.example.bookhub.Models.Story
 import com.example.bookhub.databinding.StoryBinding
 import com.github.marlonlom.utilities.timeago.TimeAgo
 import com.google.firebase.auth.FirebaseAuth
@@ -75,11 +75,9 @@ class StoryAdapter(
         fun  showmore(binding: StoryBinding)
         {
             binding.descrip.apply {
-                setShowingLine(4)
-                addShowMoreText(" Read More ")
-                addShowLessText(" Hide ")
-                setShowMoreColor(Color.RED)
-                setShowLessTextColor(Color.RED)
+                setTrimLines(3)
+                setTrimCollapsedText("Read more")
+                setTrimExpandedText("Hide")
             }
         }
         @SuppressLint("SuspiciousIndentation")
@@ -98,7 +96,7 @@ class StoryAdapter(
                 "bookhub/users/$Userid/posts/story/$postid.jpeg"
             ustorageref = FirebaseStorage.getInstance().reference.child(image_uri!!)
             ustorageref!!.downloadUrl.addOnSuccessListener {
-                if (constant.isValidContextForGlide(context)) {
+                if (common.isValidContextForGlide(context)) {
                     Glide.with(context).load(it).into(img)
                 }
             }
@@ -106,7 +104,7 @@ class StoryAdapter(
             val storageref =
                 FirebaseStorage.getInstance().reference.child("bookhub/users/$Userid/profile.jpeg")
             storageref.downloadUrl.addOnSuccessListener {
-                if (constant.isValidContextForGlide(context)) {
+                if (common.isValidContextForGlide(context)) {
                     Glide.with(context).load(it).placeholder(R.drawable.pp).into(picu)
                 }
 
